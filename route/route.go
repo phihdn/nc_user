@@ -5,7 +5,7 @@ import (
 	"github.com/labstack/echo/v4/middleware"
 	"github.com/phihdn/nc_user/config"
 	"github.com/phihdn/nc_user/handler"
-	"github.com/phihdn/nc_user/model"
+	"github.com/phihdn/nc_user/models"
 )
 
 func All(e *echo.Echo) {
@@ -17,7 +17,7 @@ func Private(e *echo.Echo) {
 	g := e.Group("/api/v1/private")
 	JWTConfig := middleware.JWTConfig{
 		SigningKey: []byte(config.Config.JWTSecret.JWTKey),
-		Claims:     &model.UserClaims{},
+		Claims:     &models.UserClaims{},
 	}
 	g.Use(middleware.JWTWithConfig(JWTConfig))
 	g.PUT("/user", handler.UpdateUser)

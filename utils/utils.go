@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"github.com/dgrijalva/jwt-go"
 	"github.com/phihdn/nc_user/config"
-	"github.com/phihdn/nc_user/model"
+	"github.com/phihdn/nc_user/models"
 	"time"
 )
 
@@ -17,7 +17,7 @@ func MD5(text string) string {
 func GenerateToken(userID int, phone, email string) string {
 	signKey := []byte(config.Config.JWTSecret.JWTKey)
 	fmt.Println("secret", config.Config.JWTSecret.JWTKey, "end secret")
-	claims := model.UserClaims{
+	claims := models.UserClaims{
 		UserID: userID,
 		Phone:  phone,
 		Email:  email,

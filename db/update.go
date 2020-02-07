@@ -4,14 +4,14 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"github.com/phihdn/nc_user/model"
+	"github.com/phihdn/nc_user/models"
 	"time"
 
 	"github.com/phihdn/nc_user/utils"
 	"go.mongodb.org/mongo-driver/bson"
 )
 
-func AddUser(user *model.User) (interface{}, error) {
+func AddUser(user *models.User) (interface{}, error) {
 	sequenceCol := Client.Database(DbName).Collection("sequences")
 	id, err := GetNextID(sequenceCol, "userId")
 	if err != nil {
@@ -25,7 +25,7 @@ func AddUser(user *model.User) (interface{}, error) {
 	return res, err
 }
 
-func UpdateUser(req *model.UserUpdateReq) (interface{}, error) {
+func UpdateUser(req *models.UserUpdateReq) (interface{}, error) {
 	var user map[string]interface{}
 
 	bs, _ := json.Marshal(req)
