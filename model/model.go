@@ -40,3 +40,8 @@ type LoginResp struct {
 	*User
 	Token string `json:"token"`
 }
+
+type Sequence struct {
+	ID    string `bson:"_id"`
+	Value int    `bson:"sequence_value"`
+}

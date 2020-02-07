@@ -3,9 +3,9 @@ package db
 import (
 	"context"
 	"fmt"
+	"github.com/phihdn/nc_user/model"
 	"time"
 
-	"github.com/phihdn/nc_user/model"
 	"github.com/phihdn/nc_user/utils"
 	"go.mongodb.org/mongo-driver/bson"
 )

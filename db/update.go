@@ -4,14 +4,20 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"github.com/phihdn/nc_user/model"
 	"time"
 
-	"github.com/phihdn/nc_user/model"
 	"github.com/phihdn/nc_user/utils"
 	"go.mongodb.org/mongo-driver/bson"
 )
 
 func AddUser(user *model.User) (interface{}, error) {
+	sequenceCol := Client.Database(DbName).Collection("sequences")
+	id, err := GetNextID(sequenceCol, "userId")
+	if err != nil {
+		return nil, err
+	}
+	user.ID = id
 	user.Password = utils.MD5(user.Password)
 	collection := Client.Database(DbName).Collection(ColName)
 	ctx, _ := context.WithTimeout(context.Background(), 5*time.Second)
