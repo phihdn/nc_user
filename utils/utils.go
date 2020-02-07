@@ -3,10 +3,11 @@ package utils
 import (
 	"crypto/md5"
 	"fmt"
+	"time"
+
 	"github.com/dgrijalva/jwt-go"
 	"github.com/phihdn/nc_user/config"
 	"github.com/phihdn/nc_user/models"
-	"time"
 )
 
 func MD5(text string) string {

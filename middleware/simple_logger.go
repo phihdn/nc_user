@@ -1,8 +1,9 @@
 package middleware
 
 import (
-	"github.com/labstack/echo/v4"
 	"log"
+
+	"github.com/labstack/echo/v4"
 )
 
 func SimpleLogger() echo.MiddlewareFunc {
@@ -12,7 +13,7 @@ func SimpleLogger() echo.MiddlewareFunc {
 
 			err := next(c)
 			resp := c.Response()
-			log.Println(req.URL.Host,req.URL.Path,req.Method,resp.Status)
+			log.Println(req.URL.Host, req.URL.Path, req.Method, resp.Status)
 			//udp metric
 			return err
 		}
